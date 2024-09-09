@@ -6,6 +6,8 @@ import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import CustomFormField from "../CustomFormField";
+import Image from "next/image";
 
 //should be in another file
 const formSchema = z.object({
@@ -40,31 +42,24 @@ const RegisterForm = () => {
           render={({ field }) => (
             <FormItem>
               <FormLabel>Username</FormLabel>
-              <FormControl>
-                <Input
-                  placeholder="shadcn"
-                  {...field}
-                />
-              </FormControl>
+              <div className="flex rounded-md border border-dark-500 bg-dark-400">
+                <FormControl>
+                  <Input
+                    placeholder="shadcn"
+                    {...field}
+                  />
+                </FormControl>
+              </div>
               <FormMessage />
             </FormItem>
           )}
         />
-        <FormField
+
+        <CustomFormField
           control={form.control}
-          name="username"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Username</FormLabel>
-              <FormControl>
-                <Input
-                  placeholder="shadcn"
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
+          name="First name"
+          label="First name"
+          placeholder="Enter your first name"
         />
         <Button
           type="submit"
